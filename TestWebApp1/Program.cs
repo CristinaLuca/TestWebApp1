@@ -26,4 +26,5 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 // This is just a comment to test the GitHub
+//This is the second comment
 app.Run();
