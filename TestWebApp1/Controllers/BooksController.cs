@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TestWebApp1.Controllers
+namespace BookStore_MVC_2026.Controllers
 {
     public class BooksController : Controller
     {
@@ -13,7 +13,6 @@ namespace TestWebApp1.Controllers
                 "1984"
             };
 
-            //passes the list books to the View
             return View(books);
         }
     }

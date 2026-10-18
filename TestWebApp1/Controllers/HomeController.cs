@@ -21,5 +21,12 @@ namespace TestWebApp1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // GET: /Home/Welcome/ 
+        public string Welcome()
+        {
+            return "This is the Welcome action method...";
+        }
+
     }
 }
