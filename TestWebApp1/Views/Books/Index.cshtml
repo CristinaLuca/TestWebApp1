@@ -4,7 +4,7 @@
 @{
 }
 <!-- directive tells the View that it will receive a list of strings.-->
-@model List<string>
+@model IEnumerable<Book>
 
 <h1>Book Store</h1>
 
@@ -14,7 +14,7 @@
     <!-- Model is a special property in an ASP.NET Core MVC View. It contains the data that the Controller passes to the View -->
     @foreach (var book in Model)
     {
-        <li>@book</li>
+        <li>@book.Title by @book.Author - price: @book.Price</li>
     }
 
 </ul>
