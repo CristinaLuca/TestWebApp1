@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Import Books from Excel</h1>
+
+<form asp-controller="Books"
+      asp-action="Import"
+      method="post"
+      enctype="multipart/form-data">
+
+
+    <!--generates a hidden security token in the HTML form to help protect the MVC application against Cross-Site Request Forgery attacks.
+        When the form is submitted, the browser sends this token along with the uploaded file.
+    -->
+    @Html.AntiForgeryToken()
+
+    <div class>
+        <label for="file"> Select Excel file (.xlsx) </label>
+
+        <input type="file"
+               id="file"
+               name="file"
+               accept=".xlsx"
+               required />
+    </div>
+
+    <button type="submit"> Import Books </button>
+
+
+</form>
