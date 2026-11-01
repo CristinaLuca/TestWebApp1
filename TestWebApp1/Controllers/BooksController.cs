@@ -100,10 +100,69 @@ namespace BookStore_MVC_2026.Controllers
                 return View();
             }
 
+        }
 
+        /** 
+         * Add book
+         */
+        //the show form
+        [HttpGet]
+        public IActionResult AddBook()
+        {
+            return View();
+        }
+
+        //add a book to the database
+        [HttpPost]
+        public async Task<IActionResult> AddBook(Book book)
+        {
+            appDBcontext.Add(book);
+            await appDBcontext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        /**
+         * Delete book
+         */
+        //GET
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Book book = await appDBcontext.Books.FindAsync(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return View(book);
 
         }
 
+        //POST
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            //find a book that has the ID "id"
+            var book = await appDBcontext.Books.FindAsync(id);
 
+            if (book == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                appDBcontext.Books.Remove(book);
+                await appDBcontext.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }

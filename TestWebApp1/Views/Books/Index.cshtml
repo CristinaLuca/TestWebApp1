@@ -16,6 +16,7 @@
     @foreach (var book in Model)
     {
         <li>@book.Title by @book.Author - price: @book.Price</li>
+        <a asp-action="Delete" asp-route-id="@book.Id">Delete</a>
     }
 
 </ul>
